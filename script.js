@@ -1,4 +1,8 @@
-const myLibrary = [];
+const addButton= document.querySelector('#add');
+const submitButton= document.querySelector('#submit');
+const dialog= document.querySelector('dialog');
+
+let myLibrary = [];
 
 function Book(title, author,pages,read){
     this.title = title;
@@ -15,61 +19,54 @@ function addBookToLibrary(title,author,pages,read){
 }
 
 addBookToLibrary('precious', 'ama', 78, 'True')
-addBookToLibrary(' hilda', 'yaa', 478, 'false')
+addBookToLibrary(' hilda', 'yaa', 478, '')
 addBookToLibrary(' yvone', 'ama', 878, 'true')
-addBookToLibrary('godwon','boy',98, 'yoo')
+addBookToLibrary('godwon','boy',98, '')
     
-function createItem(item, content){
-    let element= document.createElement(item);
-    element.textContent = content;
-    return element;
-}
 
-function deleteBook(index){
+
+function removeBook(index){
     myLibrary.splice(index,1);
-    showBox(obj)
+    showBox()
 }
 
 function showBox(){
     let container= document.querySelector('#container')
     container.textContent='';
-    for (let i=0; i<myLibrary.length; i++){
-        
-    this.obj=myLibrary[i];
-    let div= document.createElement('div');
     
-    let removeButton=document.createElement('button');
-    removeButton.classList.add('remove')
-    removeButton.textContent='X';
+    for (let i=0; i<myLibrary.length; i++){  
+    let book=myLibrary[i];
    
-    div.appendChild(removeButton)
-    div.classList.add('mybooks');
-    // div.innerHTML=(`<p>Book's Title: ${obj.title}</p> <p>Book's Author: ${obj.author}</p> <p>Number of Pages: ${obj.pages}</p> <p>Read Book: ${obj.read}</p>`)
-    div.append(
-        createItem('p',`Book's Title: ${obj.title}`),
-        createItem('p',`Book's Author: ${obj.author}`),
-        createItem('p',`Number of Pages: ${obj.pages}`),
-        createItem('p',`Read Book: ${obj.read}`) 
-    )
-    container.appendChild(div)
+    let bookItem= document.createElement('div');
+     bookItem.classList.add('mybooks');
+    bookItem.innerHTML=`<p>Book Title: ${book.title}</p> <p>Book Author: ${book.author}</p>
+         <p>Number of Pages: ${book.pages}</p> <p>Read Status: ${book.read?"Read": "Not Read Yet"}</p> 
+            <div id="btn">
+        <button class="remove" onclick="removeBook(${i})">Remove</button>
+        <button onclick= toggleRead(${i})>Change Read Status</button>
+    </div> `;
+    
+    container.appendChild(bookItem)  
+    }}
 
-     removeButton.addEventListener('click',()=>{
-    deleteBook(i);
-})}
+
+Book.prototype.toggleRead=function(){
+    this.read= !this.read
+}
+function toggleRead(index){
+    myLibrary[index].toggleRead();
+    showBox();
 }
 
 
-const addButton= document.querySelector('#add');
-const submitButton= document.querySelector('#submit');
-const dialog= document.querySelector('dialog');
-
 addButton.addEventListener('click', ()=>{
     dialog.showModal();
-    
+        dialog.querySelectorAll('input').forEach(item=>item.value='')
+
 })
 
 
-document.querySelector('#submit').addEventListener('click',(event)=>{
+document.querySelector('#box-form').addEventListener('submit',(event)=>{
      let title = document.querySelector('#title').value;
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
@@ -80,5 +77,6 @@ document.querySelector('#submit').addEventListener('click',(event)=>{
 })
 
 document.querySelector('#cancel').addEventListener('click',()=>{
-    dialog.close()
+    dialog.close();
+    
 })
