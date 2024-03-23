@@ -1,5 +1,4 @@
 const myLibrary = [];
-let container= document.querySelector('#container')
 
 function Book(title, author,pages,read){
     this.title = title;
@@ -12,12 +11,13 @@ function Book(title, author,pages,read){
 function addBookToLibrary(title,author,pages,read){
     newBook= new Book(title, author,pages,read);
     myLibrary.push(newBook);
-    showBox(newBook)
+    showBox()
 }
 
-addBookToLibrary('python data science', 'ama', 78, 'True')
-addBookToLibrary(' data science', 'yaa', 478, 'false')
-addBookToLibrary('python data science', 'ama', 78, 'true')
+addBookToLibrary('precious', 'ama', 78, 'True')
+addBookToLibrary(' hilda', 'yaa', 478, 'false')
+addBookToLibrary(' yvone', 'ama', 878, 'true')
+addBookToLibrary('godwon','boy',98, 'yoo')
     
 function createItem(item, content){
     let element= document.createElement(item);
@@ -25,9 +25,26 @@ function createItem(item, content){
     return element;
 }
 
-function showBox(obj){
-    this.div= document.createElement('div')
+function deleteBook(index){
+    myLibrary.splice(index,1);
+    showBox(obj)
+}
+
+function showBox(){
+    let container= document.querySelector('#container')
+    container.textContent='';
+    for (let i=0; i<myLibrary.length; i++){
+        
+    this.obj=myLibrary[i];
+    let div= document.createElement('div');
+    
+    let removeButton=document.createElement('button');
+    removeButton.classList.add('remove')
+    removeButton.textContent='X';
+   
+    div.appendChild(removeButton)
     div.classList.add('mybooks');
+    // div.innerHTML=(`<p>Book's Title: ${obj.title}</p> <p>Book's Author: ${obj.author}</p> <p>Number of Pages: ${obj.pages}</p> <p>Read Book: ${obj.read}</p>`)
     div.append(
         createItem('p',`Book's Title: ${obj.title}`),
         createItem('p',`Book's Author: ${obj.author}`),
@@ -35,6 +52,10 @@ function showBox(obj){
         createItem('p',`Read Book: ${obj.read}`) 
     )
     container.appendChild(div)
+
+     removeButton.addEventListener('click',()=>{
+    deleteBook(i);
+})}
 }
 
 
@@ -48,7 +69,7 @@ addButton.addEventListener('click', ()=>{
 })
 
 
-document.querySelector('#box-form').addEventListener('submit',(event)=>{
+document.querySelector('#submit').addEventListener('click',(event)=>{
      let title = document.querySelector('#title').value;
     let author = document.querySelector('#author').value;
     let pages = document.querySelector('#pages').value;
@@ -56,4 +77,8 @@ document.querySelector('#box-form').addEventListener('submit',(event)=>{
     addBookToLibrary(title,author,pages,read)
     dialog.close()
     event.preventDefault()
+})
+
+document.querySelector('#cancel').addEventListener('click',()=>{
+    dialog.close()
 })

@@ -18,3 +18,9 @@ form>label{
     padding: 2rem;
     box-sizing: border-box;
 }
+
+.remove{
+    color: red;
+    border-radius: 16px;
+    padding: .2rem 1rem;
+}
