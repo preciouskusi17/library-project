@@ -8,25 +8,37 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="img">
-        <h1 style="color: aqua; font-size: 4rem; font-family: 'Courier New', Courier, monospace;">Library</h1>
-        <p><button id="add">Add a book</button></p>
-        <footer>Created by Precious</footer>
-    </div>
+    <div class="grid">
+        <div class="sidebar">
+            <h1 style="color: aqua;background: rgb(0, 122, 170); font-size: 5vw;margin-top: 200px; font-family: 'Courier New', Courier, monospace;">Library</h1>
+            <p><button id="add">Add a book</button></p>
+            <footer>Created by Precious</footer>
+        </div>
 
-    <div>
-        <dialog>
-            <form id="box-form" method="dialog">
-            <label for="title" >Book's Title:<input required type="text" id="title" name="title" ></label>
-            <label for="author">Book's Author:<input required type="text" id="author" name="author" ></label>
-            <label for="pages">Number of Pages:<input required type="number" id="pages" name="pages" ></label>
-            <label for="read">Have you read the book? <input type="checkbox" name="status" id="read" value="Read"></label>
-            <button type="reset" id="clear">Clear</button>
-            <button type="button" id="cancel">X</button>
-            <button type="submit" id="submit" >Submit</button>
-            </form>
-        </dialog>
-        <div id="container"></div>
+         <div class="nav">
+                <img src="./img/search.svg" alt="">
+                <input type="search">
+                
+                <img src="./img/notify.svg" alt="">
+                <img class="libimg" src="./img/library.jpeg" alt="">
+                <button>New</button>
+                
+        </div>
+        
+        <div class="content">
+            <dialog>
+                <form id="box-form" method="dialog">
+                <label for="title" >Book's Title:<input required type="text" id="title" name="title" ></label>
+                <label for="author">Book's Author:<input required type="text" id="author" name="author" ></label>
+                <label for="pages">Number of Pages:<input required type="number" id="pages" name="pages" ></label>
+                <label for="read">Have you read the book? <input type="checkbox" name="status" id="read" value="Read"></label>
+                <button type="reset" id="clear">Clear</button>
+                <button type="button" id="cancel">X</button>
+                <button type="submit" id="submit" >Submit</button>
+                </form>
+            </dialog>
+            <div id="container"></div>
+        </div>
     </div>
 </body>
 </html>
