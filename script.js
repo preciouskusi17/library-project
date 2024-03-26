@@ -1,4 +1,4 @@
-const addButton= document.querySelector('#add');
+const addButton= document.querySelectorAll('#add');
 const submitButton= document.querySelector('#submit');
 const dialog= document.querySelector('dialog');
 
@@ -39,7 +39,7 @@ function showBox(){
    
     let bookItem= document.createElement('div');
      bookItem.classList.add('mybooks');
-    bookItem.innerHTML=`<h2>Book Title: ${book.title}</h2> <p>Book Author: ${book.author}</p>
+    bookItem.innerHTML=`<h2 class='title'>Book Title: ${book.title}</h2> <p>Book Author: ${book.author}</p>
          <p>Number of Pages: ${book.pages}</p> <p>Book Status: ${book.read?"Read": "Not Read Yet"}</p> 
             <div id="btn">
         <button class="remove" onclick="removeBook(${i})">Remove</button>
@@ -59,11 +59,12 @@ function toggleRead(index){
 }
 
 
-addButton.addEventListener('click', ()=>{
+addButton.forEach(item =>{ 
+    item.addEventListener('click', ()=>{
     dialog.showModal();
         dialog.querySelectorAll('input').forEach(item=>item.value='')
 
-})
+})})
 
 
 document.querySelector('#box-form').addEventListener('submit',(event)=>{

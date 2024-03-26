@@ -6,9 +6,11 @@ body{
 }
 
 .grid{
+
     display: grid;
-    grid-template-columns: 25vw 75vw;
-    grid-template-rows: 15vh 85vh;
+    grid-template-columns: min(320px, 25vw) 1fr;
+    grid-template-rows: 15vh 1fr;
+    
 }
 
 .sidebar{
@@ -16,13 +18,9 @@ body{
     background: url(./img/img.avif) no-repeat;
     background-size: cover;
     text-align: center;
-}
-
-.sidebar button{
-        padding:.8rem ;
-        font-size:1.5rem;
-        border-radius: 8px;
+    margin-bottom: -1.8rem;
     }
+
 
 .nav{
     background-color: white;
@@ -30,15 +28,18 @@ body{
     padding: 0 1rem;
     gap: 40px;
     align-items: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0px 2px 12px #aaa;
     
 }
 
 .nav>input{width: min(500px, 70vw);height: 35px;border-radius: 16px; margin-right: auto;}
 img{width: 40px;}
 
-.sidebar button, .nav button {
+.sidebar button, .nav button, dialog button {
     color: white;
-    font-size: 1.3rem;
+    font-size: min(1.3rem, 2.5vw);
     background-color: blue;
     padding: .4rem 1.2rem;
     border-radius: .5rem;
@@ -48,8 +49,7 @@ img{width: 40px;}
 
 #container{
     display: grid;
-    min-width: 800px;
-    grid-template-columns: repeat(3,250px);
+    grid-template-columns: repeat(3, min(250px, 33vw));
     grid-auto-rows: 200px;
     padding: 1rem;
     gap: 20px;
@@ -60,7 +60,7 @@ img{width: 40px;}
 
 .mybooks{
     text-transform: capitalize;
-    font: .8em sans-serif;
+    font: min(2vw, .8rem) sans-serif;
     border: solid 2px #ccc;
     text-align: center;
     box-shadow: -4px 4px 8px blue;
@@ -69,4 +69,22 @@ img{width: 40px;}
  .remove{ margin-right: 20px; background: red;}
  .change{background: skyblue;}
 
- label{display: block; padding: 1rem;}
+ label{width: 240px; text-align: left;display: inline-block;}
+
+ .change, .remove{font-size: min(.8rem,1.8vw);}
+
+ footer{
+    bottom: 0;
+    font-weight: bold;
+    color: rgb(255, 115, 0);
+    position: fixed;
+    font-size: min(1.5rem,2vw);
+    padding: 0 0 .5rem 1.5vw;
+ }
+
+dialog button{
+    padding: 4px 1rem;
+    font-size: 1.4rem;
+    margin:4px 2rem;
+} 
+ #cancel{background-color: red;color: black;}

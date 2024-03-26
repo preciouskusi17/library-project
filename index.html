@@ -21,20 +21,35 @@
                 
                 <img src="./img/notify.svg" alt="">
                 <img class="libimg" src="./img/library.jpeg" alt="">
-                <button>New</button>
+                <button id="add">New</button>
                 
         </div>
         
         <div class="content">
+            <h2 style="padding-left: 1rem;margin-bottom: 0px;">Your Books</h2>
             <dialog>
                 <form id="box-form" method="dialog">
-                <label for="title" >Book's Title:<input required type="text" id="title" name="title" ></label>
-                <label for="author">Book's Author:<input required type="text" id="author" name="author" ></label>
-                <label for="pages">Number of Pages:<input required type="number" id="pages" name="pages" ></label>
-                <label for="read">Have you read the book? <input type="checkbox" name="status" id="read" value="Read"></label>
-                <button type="reset" id="clear">Clear</button>
-                <button type="button" id="cancel">X</button>
-                <button type="submit" id="submit" >Submit</button>
+                <p>
+                    <label for="title" >Book's Title:</label>
+                    <input required type="text" id="title" name="title" >
+                </p>
+                <p>
+                    <label for="author">Book's Author:</label>
+                    <input required type="text" id="author" name="author" >
+                </p>
+                <p>
+                    <label for="pages">Number of Pages:</label>
+                    <input required type="number" id="pages" name="pages" >
+                </p>
+                <p>
+                    <label for="read">Have you read the book? </label>
+                    <input type="checkbox" name="status" id="read" value="Read">
+                </p>
+                <p>
+                    <button type="reset" id="clear">Clear</button>
+                    <button type="button" id="cancel">X</button>
+                    <button type="submit" id="submit" >Submit</button>
+                </p>
                 </form>
             </dialog>
             <div id="container"></div>
